@@ -1,0 +1,22 @@
+# Design reference & internal docs (not for public repo)
+CLAUDE.md
+ibzie-dev.jsx
+ibzie-git-page.jsx
+
+# Frontend
+frontend/.next/
+frontend/node_modules/
+frontend/.env.local
+frontend/out/
+
+# Backend
+backend/target/
+backend/data/
+backend/.env
+
+# Root
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
