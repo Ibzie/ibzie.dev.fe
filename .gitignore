@@ -3,11 +3,7 @@ CLAUDE.md
 ibzie-dev.jsx
 ibzie-git-page.jsx
 
-# Frontend
-frontend/.next/
-frontend/node_modules/
-frontend/.env.local
-frontend/out/
+
 
 # Backend
 backend/target/

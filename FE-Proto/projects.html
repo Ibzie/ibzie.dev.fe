@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects by Ibz — voice AI agents, self-supervised learning, interpretability tools, and more.">
+  <title>Projects — Ibz</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Serif+Display:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Ibz</a>
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="contact.html">Hit Me Up!</a></li>
+      </ul>
+    </div>
+    <div class="nav-overlay" aria-hidden="true"></div>
+  </nav>
+
+  <main class="container page">
+
+    <header class="page-header reveal">
+      <p class="section-label">What I've shipped</p>
+      <h1>Projects</h1>
+      <p>Real things, running in production or published as open-source. No toy repos.</p>
+    </header>
+
+    <div class="projects-grid">
+
+      <article class="project-card reveal reveal-delay-1">
+        <h3>Conntrail</h3>
+        <p class="desc">LangGraph agent observability platform — trace, debug, and monitor production AI agent workflows.</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">LangGraph</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Observability</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/Ibzie/conntrail" target="_blank" rel="noopener">GitHub &#8599;</a>
+          <a href="#" target="_blank" rel="noopener">Demo &#8599;</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal reveal-delay-1">
+        <h3>DO-VJEPA</h3>
+        <p class="desc">Video self-supervised learning with dropping objects — a novel architecture for learning robust visual representations without labels.</p>
+        <div class="tags">
+          <span class="tag">PyTorch</span>
+          <span class="tag">SSL</span>
+          <span class="tag">Video</span>
+          <span class="tag">JEPA</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/Ibzie/do-vjepa" target="_blank" rel="noopener">GitHub &#8599;</a>
+          <a href="#" target="_blank" rel="noopener">Paper &#8599;</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal reveal-delay-2">
+        <h3>SDF-VAE</h3>
+        <p class="desc">Multi-perspective geometry encoding with signed distance functions — learning compact 3D shape representations from 2D views.</p>
+        <div class="tags">
+          <span class="tag">PyTorch</span>
+          <span class="tag">3D Vision</span>
+          <span class="tag">VAE</span>
+          <span class="tag">SDF</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/Ibzie/sdf-vae" target="_blank" rel="noopener">GitHub &#8599;</a>
+          <a href="#" target="_blank" rel="noopener">Paper &#8599;</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal reveal-delay-2">
+        <h3>MoE Circuit Tracer</h3>
+        <p class="desc">Benchmarking interpretability methods on mixture-of-experts transformers — comparing ALF and AL for circuit discovery.</p>
+        <div class="tags">
+          <span class="tag">PyTorch</span>
+          <span class="tag">Transformers</span>
+          <span class="tag">Interpretability</span>
+          <span class="tag">MoE</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/Ibzie/moe-circuit-tracer" target="_blank" rel="noopener">GitHub &#8599;</a>
+          <a href="#" target="_blank" rel="noopener">Paper &#8599;</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal reveal-delay-3">
+        <h3>SpireBench</h3>
+        <p class="desc">LLM game evaluation benchmark — testing strategic reasoning and decision-making capabilities through game-playing scenarios.</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">LLMs</span>
+          <span class="tag">Benchmark</span>
+          <span class="tag">Game Theory</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/Ibzie/spirebench" target="_blank" rel="noopener">GitHub &#8599;</a>
+          <a href="#" target="_blank" rel="noopener">Leaderboard &#8599;</a>
+        </div>
+      </article>
+
+      <article class="project-card reveal reveal-delay-3">
+        <h3>Voice AI Agents</h3>
+        <p class="desc">Production voice AI agents at scale — 80+ deployed agents handling real-time WebRTC conversations with Pipecat pipelines.</p>
+        <div class="tags">
+          <span class="tag">Pipecat</span>
+          <span class="tag">WebRTC</span>
+          <span class="tag">Python</span>
+          <span class="tag">Voice AI</span>
+        </div>
+        <div class="card-links">
+          <a href="#" target="_blank" rel="noopener">Case Study &#8599;</a>
+          <a href="#" target="_blank" rel="noopener">Demo &#8599;</a>
+        </div>
+      </article>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>ibzie.dev &mdash; built with plain HTML, CSS, and caffeine</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
