@@ -1,0 +1,8 @@
+{
+  "name": "ibzie-dev-frontend",
+  "private": true,
+  "scripts": {
+    "dev": "bunx live-server ../FE-Proto --port=3000 --no-browser",
+    "build": "bun scripts/build.mjs"
+  }
+}
