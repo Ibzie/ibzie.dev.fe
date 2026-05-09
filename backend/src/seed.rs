@@ -1,6 +1,6 @@
-use sqlx::SqlitePool;
+use sqlx::PgPool;
 
-pub async fn run(pool: &SqlitePool) {
+pub async fn run(pool: &PgPool) {
     tracing::info!("Seeding database...");
 
     let ibz_git_tree = serde_json::json!([
@@ -47,38 +47,42 @@ pub async fn run(pool: &SqlitePool) {
     ])
     .to_string();
 
-    // Repos
-    let repos: &[(&str, &str, i64, i64, &str, &str, Option<&str>, &str, i64, i64, i64, i64)] = &[
+    let repos: &[(&str, &str, i64, i64, &str, &str, Option<&str>, &str, i64, i64, i64, i64, bool)] = &[
         (
             "ibz-git", "Rust", 12, 91,
             "Self-hosted git with sanity metrics baked in. PRs get scored on docstrings, test coverage, and commit granularity — not just merged.",
-            "https://github.com/Ibzie/ibz-git", None,
+            "https://git.ibzie.dev/ibz/ibz-git", None,
             &ibz_git_tree, 88, 85, 94, 79,
+            true,
         ),
         (
             "voice-nav", "Python", 7, 78,
             "AI voice agent that navigates this portfolio in real-time. Pipecat + AssemblyAI streaming STT, sub-300ms response latency.",
-            "https://github.com/Ibzie/voice-nav", Some("https://demo.ibzie.dev/voice-nav"),
+            "https://git.ibzie.dev/ibz/voice-nav", Some("https://demo.ibzie.dev/voice-nav"),
             &voice_nav_tree, 72, 65, 88, 61,
+            true,
         ),
         (
             "deepseek-burn", "Rust", 4, 84,
             "DeepSeek-V3 MoE architecture from scratch using the Burn ML framework. Pure Rust, no Python runtime.",
-            "https://github.com/Ibzie/deepseek-burn", None,
+            "https://git.ibzie.dev/ibz/deepseek-burn", None,
             &deepseek_tree, 81, 70, 90, 72,
+            false,
         ),
         (
             "sdf-vae", "Python", 9, 76,
             "Multi-perspective SDF-VAE for 3D shape generation without 3D supervision. Competitive on ShapeNet, runs on a 3090.",
-            "https://github.com/Ibzie/sdf-vae", None,
+            "https://git.ibzie.dev/ibz/sdf-vae", None,
             &sdf_vae_tree, 79, 68, 80, 65,
+            false,
         ),
     ];
 
-    for (name, lang, stars, score, desc, github_url, demo_url, file_tree, doc_score, test_score, commit_score, coverage) in repos {
+    for (name, lang, stars, score, desc, github_url, demo_url, file_tree, doc_score, test_score, commit_score, coverage, featured) in repos {
         sqlx::query(
-            "INSERT OR IGNORE INTO repos (name, lang, stars, score, description, github_url, demo_url, file_tree, doc_score, test_score, commit_score, coverage)
-             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            "INSERT INTO repos (name, lang, stars, score, description, github_url, demo_url, file_tree, doc_score, test_score, commit_score, coverage, featured)
+             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
+             ON CONFLICT (name) DO NOTHING",
         )
         .bind(name)
         .bind(lang)
@@ -92,12 +96,12 @@ pub async fn run(pool: &SqlitePool) {
         .bind(test_score)
         .bind(commit_score)
         .bind(coverage)
+        .bind(featured)
         .execute(pool)
         .await
         .ok();
     }
 
-    // Commits
     let commits: &[(&str, &str, &str, &str, &str, i64, &str)] = &[
         ("ibz-git", "a3f9c2e", "impl sanity scoring — unwrap/panic detection", "ibzie", "Rust", 94, "2h ago"),
         ("ibz-git", "b71d88a", "fix borrow checker edge case in tree traversal", "ibzie", "Rust", 88, "6h ago"),
@@ -120,8 +124,9 @@ pub async fn run(pool: &SqlitePool) {
 
     for (repo_name, hash, message, author, lang, score, committed_at) in commits {
         sqlx::query(
-            "INSERT OR IGNORE INTO commits (repo_name, hash, message, author, lang, score, committed_at)
-             VALUES (?, ?, ?, ?, ?, ?, ?)",
+            "INSERT INTO commits (repo_name, hash, message, author, lang, score, committed_at)
+             VALUES ($1, $2, $3, $4, $5, $6, $7)
+             ON CONFLICT (repo_name, hash) DO NOTHING",
         )
         .bind(repo_name)
         .bind(hash)
@@ -135,7 +140,6 @@ pub async fn run(pool: &SqlitePool) {
         .ok();
     }
 
-    // Papers
     let papers: &[(&str, &str, &str, &str, &str)] = &[
         (
             "Multi-Perspective SDF-VAE: Geometric Priors for 3D Shape Generation",
@@ -155,7 +159,8 @@ pub async fn run(pool: &SqlitePool) {
 
     for (title, authors, year, status, abstract_) in papers {
         sqlx::query(
-            "INSERT INTO papers (title, authors, year, status, abstract) VALUES (?, ?, ?, ?, ?)",
+            "INSERT INTO papers (title, authors, year, status, abstract) VALUES ($1, $2, $3, $4, $5)
+             ON CONFLICT DO NOTHING",
         )
         .bind(title)
         .bind(authors)

@@ -13,6 +13,9 @@ backend/.env
 # Root
 node_modules/
 
+# Frontend build artifacts
+frontend/dist/
+
 # OS
 .DS_Store
 Thumbs.db

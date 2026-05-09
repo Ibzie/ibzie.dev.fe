@@ -18,8 +18,8 @@
   --border: #E8E5E0;
   --border-light: #F0EDE8;
   --text: #1A1A1A;
-  --text-secondary: #5C5C5C;
-  --text-tertiary: #8A8A8A;
+  --text-secondary: #4F4F4F;
+  --text-tertiary: #7A7A7A;
   --accent: #3D8B8B;
   --accent-hover: #2E6E6E;
   --accent-light: #EDF4F4;
@@ -318,21 +318,36 @@ footer p {
   max-width: 540px;
 }
 
-/* === BIO (Home) === */
-.bio {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 3rem;
+/* === ABOUT ME (Home) === */
+.about-me {
+  padding-bottom: 2rem;
 }
 
-.bio p {
+.home-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+.about-text {
   color: var(--text-secondary);
-  font-size: 1.025rem;
-  line-height: 1.7;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  max-width: 680px;
 }
 
-/* === NOW SECTION (Home) === */
+.about-text + .about-text {
+  margin-top: 1rem;
+}
+
+/* === NOW (Home) === */
+.now {
+  padding-top: 6rem;
+  padding-bottom: 2rem;
+}
+
 .now-list {
   display: flex;
   flex-direction: column;
@@ -436,6 +451,7 @@ footer p {
 .project-card:hover {
   border-color: var(--accent);
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+  background: linear-gradient(135deg, var(--accent-light) 0%, var(--surface) 40%);
 }
 
 .project-card h3 {
@@ -503,6 +519,7 @@ footer p {
 .paper-card:hover {
   border-color: var(--accent);
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+  background: linear-gradient(135deg, var(--accent-light) 0%, var(--surface) 40%);
 }
 
 .paper-meta {
@@ -746,18 +763,17 @@ footer p {
     pointer-events: auto;
   }
 
-  .bio {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .about-text {
+    font-size: 1.05rem;
+  }
+
+  .now {
+    padding-top: 4rem;
   }
 
   .projects-grid,
   .papers-grid {
     grid-template-columns: 1fr;
-  }
-
-  .terminal {
-    max-width: 100%;
   }
 
   .contact-card {
@@ -782,6 +798,58 @@ footer p {
   .paper-card {
     padding: 1.25rem;
   }
+}
+
+/* === FEATURED BADGE === */
+.featured-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 0.15em 0.55em;
+  border-radius: 3px;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+/* === SCROLL SENTINEL === */
+.scroll-sentinel {
+  height: 1px;
+  width: 100%;
+}
+
+/* === PAPER PUBLISHED === */
+.paper-published {
+  background: #D4EDDA;
+  color: #155724;
+}
+
+/* === LOAD ERROR === */
+.load-error {
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: 0.9rem;
+  padding: 2rem 0;
+}
+
+.retry-btn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  background: none;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 0.3em 0.8em;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: background var(--transition), color var(--transition);
+}
+
+.retry-btn:hover {
+  background: var(--accent);
+  color: #fff;
 }
 
 /* === UTILITIES === */

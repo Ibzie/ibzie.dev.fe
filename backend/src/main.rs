@@ -37,6 +37,7 @@ async fn main() {
         .route("/api/repos", get(routes::repos::list))
         .route("/api/repos/:name", get(routes::repos::get_one))
         .route("/api/repos/:name/commits", get(routes::repos::commits))
+        .route("/api/webhooks/git", post(routes::webhooks::handler))
         .route("/api/papers", get(routes::papers::list))
         .route("/api/papers", post(routes::papers::create))
         .route("/api/papers/:id", delete(routes::papers::delete))

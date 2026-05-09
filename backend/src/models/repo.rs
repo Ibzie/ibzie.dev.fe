@@ -15,6 +15,7 @@ pub struct RepoRow {
     pub test_score: i64,
     pub commit_score: i64,
     pub coverage: i64,
+    pub featured: bool,
 }
 
 #[derive(Debug, Serialize)]
@@ -34,6 +35,7 @@ pub struct RepoSummary {
     pub desc: String,
     pub github_url: String,
     pub demo_url: Option<String>,
+    pub featured: bool,
     pub latest_commit: Option<LatestCommit>,
 }
 
@@ -55,6 +57,7 @@ pub struct RepoDetail {
     pub desc: String,
     pub github_url: String,
     pub demo_url: Option<String>,
+    pub featured: bool,
     pub metrics: RepoMetrics,
     pub file_tree: serde_json::Value,
     pub latest_commit: Option<LatestCommit>,

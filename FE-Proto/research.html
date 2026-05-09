@@ -41,56 +41,13 @@
       <p>Where the experiments live. Mostly ML, mostly self-supervised, mostly unreasonably ambitious.</p>
     </header>
 
-    <div class="papers-grid">
-
-      <article class="paper-card reveal reveal-delay-1">
-        <div class="paper-meta">
-          <span class="paper-date">2025</span>
-          <span class="paper-status">Preprint</span>
-        </div>
-        <h3>Multi-Perspective SDF-VAE</h3>
-        <p class="abstract">
-          A variational autoencoder that learns compact 3D shape representations from multiple
-          2D perspectives using signed distance functions. We introduce a novel multi-view
-          encoding scheme that reconstructs high-fidelity geometry from sparse viewpoints,
-          outperforming single-view baselines on ShapeNet and custom multi-perspective benchmarks.
-        </p>
-        <div class="card-links">
-          <a href="#" target="_blank" rel="noopener">Read PDF &#8599;</a>
-          <a href="#" target="_blank" rel="noopener">arXiv &#8599;</a>
-          <a href="https://github.com/Ibzie/sdf-vae" target="_blank" rel="noopener">Code &#8599;</a>
-        </div>
-      </article>
-
-      <article class="paper-card reveal reveal-delay-1">
-        <div class="paper-meta">
-          <span class="paper-date">2025</span>
-          <span class="paper-status">Preprint</span>
-        </div>
-        <h3>MoE Circuit Tracing: ALF vs AL</h3>
-        <p class="abstract">
-          A comparative study of attribution-based (ALF) and activation-based (AL) methods for
-          circuit discovery in Mixture-of-Experts transformers. We benchmark both approaches
-          on fidelity, completeness, and computational efficiency, revealing trade-offs that
-          inform best practices for mechanistic interpretability in sparse architectures.
-        </p>
-        <div class="card-links">
-          <a href="#" target="_blank" rel="noopener">Read PDF &#8599;</a>
-          <a href="#" target="_blank" rel="noopener">arXiv &#8599;</a>
-          <a href="https://github.com/Ibzie/moe-circuit-tracer" target="_blank" rel="noopener">Code &#8599;</a>
-        </div>
-      </article>
-
-    </div>
+    <div class="papers-grid" id="papers-grid"></div>
+    <div class="scroll-sentinel" id="scroll-sentinel"></div>
 
   </main>
 
-  <footer>
-    <div class="container">
-      <p>ibzie.dev &mdash; built with plain HTML, CSS, and caffeine</p>
-    </div>
-  </footer>
-
   <script src="js/main.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/papers.js"></script>
 </body>
 </html>
