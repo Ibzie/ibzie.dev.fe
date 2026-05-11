@@ -1,9 +1,6 @@
 {
   "scripts": {
-    "dev:fe": "cd frontend && bun dev",
-    "dev:be": "cd backend && cargo watch -x run",
-    "dev": "bun run dev:be & bun run dev:fe",
-    "build:fe": "cd frontend && bun run build",
-    "build:be": "cd backend && cargo build --release"
+    "dev": "cd frontend && bun dev",
+    "build": "cd frontend && bun run build"
   }
 }

@@ -1,6 +1,6 @@
 /**
  * ibzie.dev — Research page
- * Loads papers from API, renders cards, infinite scroll.
+ * Loads papers (GitHub repos with "paper" topic), renders cards.
  */
 (function () {
   'use strict';
@@ -9,9 +9,7 @@
   var sentinel = document.getElementById('scroll-sentinel');
   if (!grid || !sentinel) return;
 
-  var offset = 0;
-  var loading = false;
-  var done = false;
+  var loaded = false;
 
   function renderCard(p) {
     var card = document.createElement('article');
@@ -20,60 +18,50 @@
     var statusClass = 'paper-status';
     if (p.status === 'published') statusClass += ' paper-published';
 
+    var linksHtml = '<a href="' + p.url + '" target="_blank" rel="noopener">Repo &#8599;</a>';
+    if (p.homepage) {
+      linksHtml += '<a href="' + p.homepage + '" target="_blank" rel="noopener">PDF &#8599;</a>';
+    }
+
     card.innerHTML =
       '<div class="paper-meta">' +
         '<span class="paper-date">' + p.year + '</span>' +
         '<span class="' + statusClass + '">' + p.status + '</span>' +
       '</div>' +
-      '<h3>' + p.title + '</h3>' +
-      '<p class="abstract">' + (p['abstract'] || '') + '</p>' +
-      '<div class="card-links">' +
-        '<a href="#" rel="noopener">Read PDF &#8599;</a>' +
-        '<a href="#" rel="noopener">arXiv &#8599;</a>' +
-      '</div>';
+      '<h3>' + p.name + '</h3>' +
+      '<p class="abstract">' + p.desc + '</p>' +
+      '<div class="card-links">' + linksHtml + '</div>';
 
     return card;
   }
 
-  function appendCards(cards) {
-    cards.forEach(function (p, i) {
-      var card = renderCard(p);
-      card.classList.add('reveal-delay-' + Math.min(i % 4, 4));
-      grid.appendChild(card);
+  function load() {
+    if (loaded) return;
+    loaded = true;
+    sentinel.innerHTML = '';
 
-      requestAnimationFrame(function () {
-        card.classList.add('revealed');
-      });
-    });
-  }
-
-  function loadMore() {
-    if (loading || done) return;
-    loading = true;
-
-    IbzApi.fetchPapers(offset).then(function (data) {
+    IbzApi.fetchPapers().then(function (data) {
       var papers = data.papers;
-      if (papers && papers.length) {
-        appendCards(papers);
-        offset += papers.length;
+      if (!papers || !papers.length) {
+        grid.innerHTML = '<p class="load-error">No papers found.</p>';
+        return;
       }
-      if (!data.hasMore) {
-        done = true;
-        sentinel.style.display = 'none';
-      }
-      loading = false;
+
+      papers.forEach(function (p, i) {
+        var card = renderCard(p);
+        card.classList.add('reveal-delay-' + Math.min(i % 4, 4));
+        grid.appendChild(card);
+
+        requestAnimationFrame(function () {
+          card.classList.add('revealed');
+        });
+      });
+
+      sentinel.style.display = 'none';
     }).catch(function () {
-      sentinel.innerHTML = '<p class="load-error">Failed to load. <button class="retry-btn" onclick="location.reload()">Retry</button></p>';
-      loading = false;
+      sentinel.innerHTML = '<p class="load-error">Failed to load papers. <button class="retry-btn" onclick="location.reload()">Retry</button></p>';
     });
   }
 
-  var observer = new IntersectionObserver(function (entries) {
-    if (entries[0].isIntersecting) {
-      loadMore();
-    }
-  }, { rootMargin: '0px 0px 200px 0px' });
-
-  observer.observe(sentinel);
-  loadMore();
+  load();
 })();

@@ -1,6 +1,6 @@
 /**
  * ibzie.dev — Projects page
- * Loads projects from API, renders cards, infinite scroll.
+ * Loads repos via GitHub API, renders cards.
  */
 (function () {
   'use strict';
@@ -9,21 +9,17 @@
   var sentinel = document.getElementById('scroll-sentinel');
   if (!grid || !sentinel) return;
 
-  var offset = 0;
-  var loading = false;
-  var done = false;
+  var loaded = false;
 
   function renderCard(p) {
     var card = document.createElement('article');
     card.className = 'project-card reveal';
 
-    var tagsHtml = (p.tags || [p.lang]).map(function (t) {
-      return '<span class="tag">' + t + '</span>';
-    }).join('');
+    var tagsHtml = '<span class="tag">' + (p.lang || 'Code') + '</span>';
 
-    var linksHtml = '<a href="' + (p.githubUrl || '#') + '" target="_blank" rel="noopener">Repo &#8599;</a>';
-    if (p.demoUrl) {
-      linksHtml += '<a href="' + p.demoUrl + '" target="_blank" rel="noopener">Demo &#8599;</a>';
+    var linksHtml = '<a href="' + p.url + '" target="_blank" rel="noopener">Repo &#8599;</a>';
+    if (p.homepage) {
+      linksHtml += '<a href="' + p.homepage + '" target="_blank" rel="noopener">Demo &#8599;</a>';
     }
 
     var badgeHtml = p.featured ? '<span class="featured-badge">Featured</span>' : '';
@@ -37,45 +33,33 @@
     return card;
   }
 
-  function appendCards(cards) {
-    cards.forEach(function (p, i) {
-      var card = renderCard(p);
-      card.classList.add('reveal-delay-' + Math.min(i % 4, 4));
-      grid.appendChild(card);
+  function load() {
+    if (loaded) return;
+    loaded = true;
+    sentinel.innerHTML = '';
 
-      requestAnimationFrame(function () {
-        card.classList.add('revealed');
-      });
-    });
-  }
-
-  function loadMore() {
-    if (loading || done) return;
-    loading = true;
-
-    IbzApi.fetchProjects(offset).then(function (data) {
+    IbzApi.fetchProjects().then(function (data) {
       var projects = data.projects;
-      if (projects && projects.length) {
-        appendCards(projects);
-        offset += projects.length;
+      if (!projects || !projects.length) {
+        grid.innerHTML = '<p class="load-error">No projects found.</p>';
+        return;
       }
-      if (!data.hasMore) {
-        done = true;
-        sentinel.style.display = 'none';
-      }
-      loading = false;
+
+      projects.forEach(function (p, i) {
+        var card = renderCard(p);
+        card.classList.add('reveal-delay-' + Math.min(i % 4, 4));
+        grid.appendChild(card);
+
+        requestAnimationFrame(function () {
+          card.classList.add('revealed');
+        });
+      });
+
+      sentinel.style.display = 'none';
     }).catch(function () {
-      sentinel.innerHTML = '<p class="load-error">Failed to load. <button class="retry-btn" onclick="location.reload()">Retry</button></p>';
-      loading = false;
+      sentinel.innerHTML = '<p class="load-error">Failed to load projects. <button class="retry-btn" onclick="location.reload()">Retry</button></p>';
     });
   }
 
-  var observer = new IntersectionObserver(function (entries) {
-    if (entries[0].isIntersecting) {
-      loadMore();
-    }
-  }, { rootMargin: '0px 0px 200px 0px' });
-
-  observer.observe(sentinel);
-  loadMore();
+  load();
 })();
