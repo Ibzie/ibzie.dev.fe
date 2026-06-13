@@ -1,19 +1,9 @@
-# Design reference & internal docs (not for public repo)
-CLAUDE.md
-ibzie-dev.jsx
-ibzie-git-page.jsx
-
-
-
-# Backend
-backend/target/
-backend/data/
-backend/.env
-
 # Root
 node_modules/
 
 # Frontend build artifacts
+frontend/.next/
+frontend/out/
 frontend/dist/
 
 # OS

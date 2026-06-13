@@ -1,6 +1,13 @@
 {
+  "name": "ibzie-dev",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "ibzie.dev — Next.js portfolio frontend",
   "scripts": {
     "dev": "cd frontend && bun dev",
-    "build": "cd frontend && bun run build"
+    "build": "cd frontend && bun run build",
+    "start": "cd frontend && bun start",
+    "lint": "cd frontend && bun run lint"
   }
 }
