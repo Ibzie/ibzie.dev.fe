@@ -1,8 +1,6 @@
 import { Reveal } from "@/components/reveal";
 import { ContactCard } from "@/components/contact-card";
 
-export const dynamic = "force-dynamic";
-
 export const metadata = {
   title: "Hit Me Up!",
   description: "Get in touch with Ibz — email, LinkedIn, GitHub, and more.",

@@ -2,8 +2,6 @@ import { Reveal } from "@/components/reveal";
 import { TimelineItem } from "@/components/timeline-item";
 import { ProLaxText } from "@/components/pro-lax";
 
-export const dynamic = "force-dynamic";
-
 export const metadata = {
   title: "Experience",
   description: "Experience — Ibz's work history, education, and achievements.",

@@ -1,4 +1,3 @@
-import { unstable_cache } from "next/cache";
 import { Project, Paper, PaperStatus } from "./types";
 
 const GH_USER = "Ibzie";
@@ -36,8 +35,8 @@ function mapRepo(r: any): Project | Paper | null {
   return { ...base, type: "project" };
 }
 
-async function fetchAllRaw() {
-  const res = await fetch(GH_REPOS, { cache: "no-store" });
+async function fetchAll() {
+  const res = await fetch(GH_REPOS);
 
   if (!res.ok) {
     throw new Error(`GitHub API error ${res.status}`);
@@ -63,10 +62,6 @@ async function fetchAllRaw() {
 
   return { projects, papers };
 }
-
-const fetchAll = unstable_cache(fetchAllRaw, ["github-repos"], {
-  revalidate: 300,
-});
 
 export async function fetchProjects(): Promise<Project[]> {
   const { projects } = await fetchAll();

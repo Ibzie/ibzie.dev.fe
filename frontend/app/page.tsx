@@ -7,8 +7,6 @@ import {
   LaxOnly,
 } from "@/components/pro-lax";
 
-export const dynamic = "force-dynamic";
-
 export const metadata = {
   title: "Ibzie — Ibrahim's personal site",
 };

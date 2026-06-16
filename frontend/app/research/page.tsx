@@ -4,8 +4,6 @@ import { PaperCard } from "@/components/paper-card";
 import { Reveal } from "@/components/reveal";
 import { ProLaxText } from "@/components/pro-lax";
 
-export const dynamic = "force-dynamic";
-
 export const metadata = {
   title: "Research",
   description:
