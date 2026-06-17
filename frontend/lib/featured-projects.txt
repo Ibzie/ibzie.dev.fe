@@ -1,0 +1,6 @@
+https://github.com/Ibzie/AI-Agents-Sequence-Game-Tournament
+https://github.com/Ibzie/MoE-Circuit-Tracer-Experiment
+https://github.com/Ibzie/Multi-Perspective-SDF-VAE-Research
+https://github.com/Ibzie/PyTorch-Video-Prediction-Models
+https://github.com/Ibzie/Local-NotebookLM
+https://github.com/Ibzie/Numidium-Local

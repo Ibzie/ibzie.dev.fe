@@ -25,7 +25,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </a>
         {project.homepage && (
           <a href={project.homepage} target="_blank" rel="noopener">
-            Demo ↗
+            {project.homepage.toLowerCase().endsWith(".pdf") ? "PDF ↗" : "Demo ↗"}
           </a>
         )}
       </div>
