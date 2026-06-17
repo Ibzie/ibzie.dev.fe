@@ -29,7 +29,7 @@ const aboutPro =
   "<p class='about-text'>I'm a 23-year-old ML Engineer and Applied Researcher based in Pakistan, with six years of hands-on work across systems, research, and production. If you're looking for someone who understands what technology your users actually need - and just as importantly, what they don't - then hit me up.</p><p class='about-text'>When I'm not shipping features or closing PRs, I'm buried in research around Robotics, World Models, and Mechanistic Interpretability of LLMs.</p>";
 
 const aboutLax =
-  "<p class='about-text'>I'm a 23-year-old ML Engineer and Applied Researcher based in Pakistan, six years into figuring out how systems actually work. Think of me as the party member who reads the quest logs so you don't have to - I care about what users actually need, and just as much about what they don't.</p><p class='about-text'>When I'm not shipping features or closing PRs, I'm usually deep in Robotics, World Models, and Mechanistic Interpretability of LLMs. Less main-quest grinding, more hidden-lore hunting - the kind of curiosity that checks every cave in <strong>Skyrim</strong> just to see what's inside.</p>";
+  "<p class='about-text'>By day I'm a 23-year-old ML Engineer and Applied Researcher based in Pakistan - but that's the main quest, and this page is about the side content. Think of me as the party member who reads every quest log anyway, just in case something's hidden in there.</p><p class='about-text'>Most evenings I'm chasing 100% completion on <strong>Skyrim</strong>, <strong>Baldur's Gate 3</strong>, and <strong>Cyberpunk 2077</strong> - every cave, every side quest, no skipping. When I'm not gaming, I'm soldering together <strong>Arduino</strong> and <strong>Raspberry Pi</strong> builds, running physics sims in <strong>MuJoCo</strong> just to see what breaks, or attempting to cook a new dish every week with mixed success.</p>";
 
 export default function HomePage() {
   return (
@@ -59,8 +59,8 @@ export default function HomePage() {
                 <div className="lax-stat-label">Cyberpunk Playthroughs</div>
               </div>
               <div className="lax-stat-card">
-                <div className="lax-stat-number">∞</div>
-                <div className="lax-stat-label">Gwent Hands Played</div>
+                <div className="lax-stat-number">30+</div>
+                <div className="lax-stat-label">New Dishes Attempted</div>
               </div>
               <div className="lax-stat-card">
                 <div className="lax-stat-number">47</div>
