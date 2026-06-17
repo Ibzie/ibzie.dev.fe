@@ -14,13 +14,13 @@ export function ContactCard() {
       </p>
 
       <div className="contact-links">
-        <a href="mailto:hey@ibzie.dev" className="contact-link">
+        <a href="mailto:ibrahimakhtar3@gmail.com" className="contact-link">
           <span className="icon">@</span>
           Email
         </a>
 
         <a
-          href="https://linkedin.com/in/ibrahim"
+          href="https://www.linkedin.com/in/ibrahim-akhtar-ab543823b/"
           target="_blank"
           rel="noopener"
           className="contact-link"
