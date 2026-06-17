@@ -1,4 +1,4 @@
-import { ProLaxText } from "./pro-lax";
+import { ProLaxText, ProLaxHtml } from "./pro-lax";
 
 interface TimelineItemProps {
   proDate: string;
@@ -32,9 +32,9 @@ export function TimelineItem({
       <p className="timeline-org">
         <ProLaxText pro={proOrg} lax={laxOrg} />
       </p>
-      <p className="timeline-desc">
-        <ProLaxText pro={proDesc} lax={laxDesc} />
-      </p>
+      <div className="timeline-desc">
+        <ProLaxHtml pro={proDesc} lax={laxDesc} />
+      </div>
     </div>
   );
 }

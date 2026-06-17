@@ -28,10 +28,10 @@ export function Hero() {
       <p className="tagline">
         {mounted && isLax ? (
           <TextScramble duration={1200}>
-            I sink ungodly hours into RPGs, tinker with Linux, and build things for fun.
+            I automate with AI, train experimental models, and turn research ideas into systems that work in the real world - the kind of slow, stubborn grind that would make a Witcher proud.
           </TextScramble>
         ) : (
-          "I build voice AI agents, train self-supervised models, and ship things that matter."
+          "I automate with AI, train experimental models, and bridge the gap between academic research and production at scale."
         )}
       </p>
     </section>

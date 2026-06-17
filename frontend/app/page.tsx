@@ -8,29 +8,28 @@ import {
 } from "@/components/pro-lax";
 
 export const metadata = {
-  title: "Ibzie — Ibrahim's personal site",
+  title: "Ibzie - Ibrahim's personal site",
 };
 
 const nowPro = [
-  "Building <strong>Conntrail</strong>, an observability layer for LangGraph agents",
-  "Shipping <strong>80+ production voice AI agents</strong> with Pipecat &amp; WebRTC",
-  "Finishing <strong>DO-VJEPA</strong>, a novel video SSL architecture",
-  "Playing way too much <strong>Minecraft</strong>",
+  "Automating pharmacy logistics at <strong>weel.io</strong>",
+  "Experimenting with <strong>DO-VJEPA</strong>, a novel video SSL architecture",
+  "Building <strong>Conntrail</strong> to see where and why agents hallucinate, and fixing them in prod when they do fail",
+  "Looking for scholarships in the EU for my Master's",
 ];
 
 const nowLax = [
-  "Finishing my <strong>Dark Urge playthrough</strong> in Baldur's Gate 3",
-  "Planning a <strong>netrunner build</strong> for my next Cyberpunk run",
-  "Finally playing <strong>The Witcher 3 DLCs</strong> (I know, I know)",
-  "Writing a <strong>Neovim plugin</strong> nobody asked for",
-  "Collecting <strong>mechanical keyboards</strong> like they're legendary loot",
+  "Automating pharmacy logistics at <strong>weel.io</strong> - optimizing the supply chain questline, like planning a smuggling run through Night City",
+  "Experimenting with <strong>DO-VJEPA</strong>, a video SSL architecture that might actually see the world properly",
+  "Building <strong>Conntrail</strong> to catch agents hallucinating before they derail a production run - no Baldur's Gate save-scumming allowed",
+  "Searching for EU scholarships for my Master's - still looking for the right guild, preferably one with a forge like Skyrim",
 ];
 
 const aboutPro =
-  "<p class='about-text'>I'm a 22-year-old ML engineer and applied researcher based in Pakistan. I work on problems at the intersection of production engineering and research — voice AI agents running at scale, novel self-supervised video architectures, and interpretability tooling for Mixture-of-Experts transformers.</p><p class='about-text'>When I'm not shipping ML systems, you'll find me deep in Minecraft redstone engineering, tweaking my Arch Linux dotfiles, or writing open-source tools that I wish someone else had already built.</p>";
+  "<p class='about-text'>I'm a 23-year-old ML Engineer and Applied Researcher based in Pakistan, with six years of hands-on work across systems, research, and production. If you're looking for someone who understands what technology your users actually need - and just as importantly, what they don't - then hit me up.</p><p class='about-text'>When I'm not shipping features or closing PRs, I'm buried in research around Robotics, World Models, and Mechanistic Interpretability of LLMs.</p>";
 
 const aboutLax =
-  "<p class='about-text'>By day I build ML systems. But when the laptop closes, I'm probably 140 hours deep into <strong>Baldur's Gate 3</strong>, theorycrafting my next build or save-scumming dialogue checks like a true degenerate. I've also sunk an embarrassing amount of time into <strong>Cyberpunk 2077</strong> and <strong>The Witcher</strong> — CDPR owns a piece of my soul at this point.</p><p class='about-text'>When I'm not in Faerûn or Night City, I'm ricing my Arch Linux setup, collecting mechanical keyboards, or writing open-source tools that no one asked for but I needed at 3 AM.</p>";
+  "<p class='about-text'>I'm a 23-year-old ML Engineer and Applied Researcher based in Pakistan, six years into figuring out how systems actually work. Think of me as the party member who reads the quest logs so you don't have to - I care about what users actually need, and just as much about what they don't.</p><p class='about-text'>When I'm not shipping features or closing PRs, I'm usually deep in Robotics, World Models, and Mechanistic Interpretability of LLMs. Less main-quest grinding, more hidden-lore hunting - the kind of curiosity that checks every cave in <strong>Skyrim</strong> just to see what's inside.</p>";
 
 export default function HomePage() {
   return (

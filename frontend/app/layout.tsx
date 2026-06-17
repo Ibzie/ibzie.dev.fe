@@ -8,11 +8,11 @@ import { CursorGlow } from "@/components/cursor-glow";
 
 export const metadata: Metadata = {
   title: {
-    default: "Ibzie — Ibrahim's personal site",
-    template: "%s — Ibzie",
+    default: "Ibzie - Ibrahim's personal site",
+    template: "%s - Ibzie",
   },
   description:
-    "Ibz (Ibrahim) — ML Engineer & Applied Researcher. Voice AI, self-supervised learning, open-source tools.",
+    "Ibz (Ibrahim) - ML Engineer & Applied Researcher. Voice AI, self-supervised learning, open-source tools.",
 };
 
 const themeScript = `

@@ -7,7 +7,7 @@ import { ProLaxText } from "@/components/pro-lax";
 export const metadata = {
   title: "Research",
   description:
-    "Research by Ibz — papers on self-supervised learning, 3D vision, and mechanistic interpretability.",
+    "Research by Ibz - papers on self-supervised learning, 3D vision, and mechanistic interpretability.",
 };
 
 export default async function ResearchPage() {
@@ -23,7 +23,7 @@ export default async function ResearchPage() {
       <Reveal>
         <header className="page-header">
           <p className="section-label">
-            <ProLaxText pro="Papers & Preprints" lax="Achievement unlocks" />
+            <ProLaxText pro="Independent Research" lax="Solo Campaigns" />
           </p>
           <h1>
             <ProLaxText pro="Research" lax="Quest Log" />

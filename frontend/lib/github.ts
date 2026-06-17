@@ -1,7 +1,9 @@
 import { Project, Paper, PaperStatus } from "./types";
 
 const GH_USER = "Ibzie";
-const GH_REPOS = `https://api.github.com/users/${GH_USER}/repos?sort=updated&per_page=100&type=owner`;
+const GH_REPOS_BASE = `https://api.github.com/users/${GH_USER}/repos?per_page=100&type=owner`;
+const GH_REPOS_BY_UPDATED = `${GH_REPOS_BASE}&sort=updated`;
+const GH_REPOS_DEFAULT = `${GH_REPOS_BASE}`;
 
 function statusFromTopics(topics: string[]): PaperStatus {
   if (topics.includes("paper-published")) return "published";
@@ -35,23 +37,25 @@ function mapRepo(r: any): Project | Paper | null {
   return { ...base, type: "project" };
 }
 
-async function fetchAll() {
-  const res = await fetch(GH_REPOS);
+async function fetchRepos(url: string) {
+  const res = await fetch(url);
 
   if (!res.ok) {
     throw new Error(`GitHub API error ${res.status}`);
   }
 
-  const repos = (await res.json()) as any[];
-  const projects: Project[] = [];
-  const papers: Paper[] = [];
+  return (await res.json()) as any[];
+}
 
+export async function fetchProjects(): Promise<Project[]> {
+  const repos = await fetchRepos(GH_REPOS_DEFAULT);
+
+  const projects: Project[] = [];
   for (const r of repos) {
     if (r.fork) continue;
     const item = mapRepo(r);
-    if (!item) continue;
-    if (item.type === "paper") papers.push(item);
-    else projects.push(item);
+    if (!item || item.type === "paper") continue;
+    projects.push(item);
   }
 
   projects.sort((a, b) => {
@@ -60,15 +64,19 @@ async function fetchAll() {
     return 0;
   });
 
-  return { projects, papers };
-}
-
-export async function fetchProjects(): Promise<Project[]> {
-  const { projects } = await fetchAll();
   return projects;
 }
 
 export async function fetchPapers(): Promise<Paper[]> {
-  const { papers } = await fetchAll();
+  const repos = await fetchRepos(GH_REPOS_BY_UPDATED);
+
+  const papers: Paper[] = [];
+  for (const r of repos) {
+    if (r.fork) continue;
+    const item = mapRepo(r);
+    if (!item || item.type !== "paper") continue;
+    papers.push(item);
+  }
+
   return papers;
 }

@@ -7,7 +7,7 @@ import { ProLaxText } from "@/components/pro-lax";
 export const metadata = {
   title: "Projects",
   description:
-    "Projects by Ibz — voice AI agents, self-supervised learning, interpretability tools, and more.",
+    "Projects by Ibz - voice AI agents, self-supervised learning, interpretability tools, and more.",
 };
 
 export default async function ProjectsPage() {

@@ -3,7 +3,7 @@ import { ContactCard } from "@/components/contact-card";
 
 export const metadata = {
   title: "Hit Me Up!",
-  description: "Get in touch with Ibz — email, LinkedIn, GitHub, and more.",
+  description: "Get in touch with Ibz - email, LinkedIn, GitHub, and more.",
 };
 
 export default function ContactPage() {
